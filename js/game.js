@@ -1,11 +1,8 @@
 let canvas;
-let ctx;
-let character = new Image();
+let world;
+
 
 function init() {
     canvas = document.getElementById('canvas');
-    character.src = 'img/2_character_pepe/2_walk/W-21.png';
-    ctx = canvas.getContext('2d');
-    ctx.drawImage(character, 20, 20, 50, 150);
-
+    world = new World(canvas);
 }
