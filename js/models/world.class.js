@@ -52,7 +52,7 @@ constructor(canvas) {
             mo.x = mo.x * -1;
         }
 
-        this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.heigth)
+        this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.heigth);
         if(mo.otherDirection) {
             mo.x = mo.x * -1;
             this.ctx.restore();
