@@ -16,7 +16,7 @@ class MovableObject{
             if(this.isAboveGround()) {
             this.y -= this.speedY;
             this.speedY -= this.acceleration; }
-        }, 1000 / 25)
+        }, 1000 / 10)
     }
 
     isAboveGround() {
@@ -47,7 +47,7 @@ class MovableObject{
     }
 
     playAnimation(images) {
-        let i = this.currentImage % this.imagesWalking.length;  
+        let i = this.currentImage % this.images.length;  
         let path = images[i];
         this.img = this.imageCache[path];
         this.currentImage++; 
