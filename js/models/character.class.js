@@ -1,5 +1,5 @@
 class Character extends MovableObject {
-    y = 80
+    y = 70;
     width = 150;
     heigth = 200;
     imagesWalking = [
@@ -26,6 +26,7 @@ class Character extends MovableObject {
     constructor(){
         super().loadImage('img/2_character_pepe/2_walk/W-21.png');
         this.loadImages(this.imagesWalking);
+        this.loadImages(this.imagesJumping);
         this.applyGravity();
         this.animate();
     }
@@ -43,6 +44,11 @@ class Character extends MovableObject {
                 this.x -= this.speed + 5;
                 this.otherDirection = true;
                 }
+
+            if(this.world.keyboard.space && !this.isAboveGround()) {
+                this.jump();
+            }
+
             this.world.camera_x = -this.x + 100;
 
         }, 1000 / 60)
@@ -59,7 +65,4 @@ class Character extends MovableObject {
         }, 50); 
     }
 
-    jump() {
-
-    }
 }
