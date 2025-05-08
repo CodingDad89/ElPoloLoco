@@ -71,7 +71,12 @@ class MovableObject{
         this.speedY = 30;
     }
 
-
+    isColliding(mo) {
+        return this.x + this.width > mo.x &&
+        this.y + this.heigth > mo.y &&
+        this.x < mo.x &&
+        this.y < mo.y + mo.heigth;
     
+}
 }
 
