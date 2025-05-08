@@ -28,6 +28,20 @@ class MovableObject{
         this.img.src = path;
     }
 
+    draw(ctx) {
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.heigth);
+    }
+
+    drawFrame(ctx) {
+        if(this instanceof Character || this instanceof Chicken || this instanceof Endboss) {
+        ctx.beginPath();
+        ctx.lineWidth = '5';
+        ctx.strokeStyle = 'blue';
+        ctx.rect(this.x, this.y, this.width, this.heigth);
+        ctx.stroke();
+    }
+    }
+
     loadImages(arr) {
         arr.forEach((path) => {
              let img = new Image();
@@ -36,14 +50,14 @@ class MovableObject{
         });
     }
     moveRight() {
-        console.log("moving right");
-        
+        this.x += this.speed + 5;
+        this.otherDirection = false;
     }
 
     moveLeft() {
-        setInterval(() => {
-            this.x -= this.speed;
-        }, 1000 / 60);
+        
+            this.x -= this.speed + 5;
+            this.otherDirection = true;
     }
 
     playAnimation(images) {
@@ -56,6 +70,8 @@ class MovableObject{
     jump() {
         this.speedY = 30;
     }
+
+
     
 }
 
