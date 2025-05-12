@@ -1,10 +1,5 @@
-class MovableObject{
-    x = 120;
-    y = 220;
-    img;
-    width = 100;
-    heigth = 150;
-    imageCache = [];
+class MovableObject extends DrawableObject {
+
     speed = 0.15;
     otherDirection = false;
     speedY = 0;
@@ -24,15 +19,6 @@ class MovableObject{
         return this.y < 210;
     }
 
-    loadImage(path) {
-        this.img = new Image();
-        this.img.src = path;
-    }
-
-    draw(ctx) {
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.heigth);
-    }
-
     drawFrame(ctx) {
         if(this instanceof Character || this instanceof Chicken || this instanceof Endboss) {
         ctx.beginPath();
@@ -43,13 +29,6 @@ class MovableObject{
     }
     }
 
-    loadImages(arr) {
-        arr.forEach((path) => {
-             let img = new Image();
-        img.src = path;
-        this.imageCache[path] = img;
-        });
-    }
     moveRight() {
         this.x += this.speed + 5;
         this.otherDirection = false;
@@ -78,6 +57,22 @@ class MovableObject{
         this.x < mo.x + mo.width &&
         this.y < mo.y + mo.heigth;
     
-}
+    }
+
+    hit() {
+        this.energy -= 5;
+        if(this.energy <= 0) {
+            this.energy = 0;
+            
+        }
+    }
+
+    isDead() {
+        return this.energy == 0;
+    }
+
+    isHurt() {
+        return this.energy < 100 && this.energy > 0;
+    }
 }
 
