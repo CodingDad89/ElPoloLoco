@@ -3,7 +3,7 @@ class MovableObject extends DrawableObject {
     speed = 0.15;
     otherDirection = false;
     speedY = 0;
-    acceleration = 2.0;
+    acceleration = 0.4;
     energy = 100;
 
     applyGravity() {
@@ -16,18 +16,12 @@ class MovableObject extends DrawableObject {
     }
 
     isAboveGround() {
+        if(this instanceof ThrowableObject) {
+            return true;
+        }
         return this.y < 210;
     }
 
-    drawFrame(ctx) {
-        if(this instanceof Character || this instanceof Chicken || this instanceof Endboss) {
-        ctx.beginPath();
-        ctx.lineWidth = '5';
-        ctx.strokeStyle = 'blue';
-        ctx.rect(this.x, this.y, this.width, this.heigth);
-        ctx.stroke();
-    }
-    }
 
     moveRight() {
         this.x += this.speed + 5;
@@ -48,11 +42,11 @@ class MovableObject extends DrawableObject {
     }
 
     jump() {
-        this.speedY = 30;
+        this.speedY = 14;
     }
 
     isColliding(mo) {
-        return this.x + this.width > mo.x &&
+        return this.x + this.width > mo.x &&    
         this.y + this.heigth > mo.y &&
         this.x < mo.x + mo.width &&
         this.y < mo.y + mo.heigth;
