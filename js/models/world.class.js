@@ -7,6 +7,7 @@ ctx;
 keyboard;
 camera_x = 0;
 statusBar = new StatusBar();
+bottles = new Bottles();
 throwableObjects = [];
 
 constructor(canvas) {
@@ -54,13 +55,15 @@ constructor(canvas) {
         this.ctx.translate(this.camera_x, 0);
         this.addObjectsToMap(this.level.backgroundObjects);
 
+        this.addObjectsToMap(this.level.clouds);
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
-        this.addObjectsToMap(this.level.clouds);
 
         this.ctx.translate(-this.camera_x, 0);
         this.addToMap(this.statusBar);
         this.ctx.translate(this.camera_x, 0);
+
+        //Hier sollen die Flaschen eingesetzt werden. Hatte Stand 15.05. nicht geklappt!
 
         this.addObjectsToMap(this.throwableObjects);
         

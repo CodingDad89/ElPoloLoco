@@ -11,7 +11,9 @@ class Endboss extends MovableObject {
  
     ]
 
-    y = 280;
+    width = 280;
+    heigth = 450;
+    y = 10;
     currentImage = 0;
 
     constructor() {

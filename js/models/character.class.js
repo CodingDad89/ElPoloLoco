@@ -1,5 +1,5 @@
 class Character extends MovableObject {
-    y = 70;
+    y = 60;
     width = 150;
     heigth = 200;
     imagesWalking = [
@@ -79,16 +79,19 @@ class Character extends MovableObject {
                 this.playAnimation(this.imagesDead);
                 
             } 
-            else if(this.isHurt()) {
-                this.playAnimation(this.imagesHurt);
-            }
-            else if(this.isAboveGround()) {
-                this.playAnimation(this.imagesJumping);
-            } else {
 
-                if(this.world.keyboard.right || this.world.keyboard.left ) {
+            else if(this.world.keyboard.right || this.world.keyboard.left ) {
                 this.playAnimation(this.imagesWalking);
             }
+
+            else if(this.isAboveGround()) {
+                this.playAnimation(this.imagesJumping);
+            }
+            else {
+                if(this.isHurt()) {
+                this.playAnimation(this.imagesHurt);
+            }
+
         }
         }, 50); 
     }

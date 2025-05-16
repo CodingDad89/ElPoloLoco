@@ -19,7 +19,7 @@ class MovableObject extends DrawableObject {
         if(this instanceof ThrowableObject) {
             return true;
         }
-        return this.y < 210;
+        return this.y < 220;
     }
 
 
@@ -54,7 +54,7 @@ class MovableObject extends DrawableObject {
     }
 
     hit() {
-        this.energy -= 5;
+        this.energy -= 20;
         if(this.energy <= 0) {
             this.energy = 0;
             
